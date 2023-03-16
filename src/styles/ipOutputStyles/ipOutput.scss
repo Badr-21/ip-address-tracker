@@ -1,0 +1,69 @@
+@use "../mixins/mixins" as *;
+@use "../colors/colors" as *;
+@use "../fonts/fonts" as *;
+
+.ip-output {
+   font-family: $font-family;
+   width: 80%;
+   padding: 2rem;
+   background-color: $White;
+   border-radius: 0.5rem;
+   position: absolute;
+   z-index: 99;
+   top: 11rem;
+   left: 10%;
+   @include flexbox(space-between, center);
+   flex-wrap: wrap;
+   > div:not(:first-child) {
+      padding-left: 1.5rem;
+      border-left: 0.1rem solid $Dark-Gray;
+   }
+   > div {
+      width: calc(100% / 4);
+      padding-right: 2rem;
+      h2 {
+         font-size: 10px;
+         font-weight: $font-500;
+         text-transform: uppercase;
+         color: $Dark-Gray;
+         margin-bottom: 0.8rem;
+      }
+      p {
+         font-size: 26px;
+         font-weight: $font-500;
+      }
+   }
+}
+
+@media (width <= 1115px) {
+   .ip-output {
+      padding: 1rem;
+      top: 10rem;
+      @include flexbox(space-between, center, 0, 1rem);
+      > div {
+         width: calc(100% / 2);
+         padding-left: 1.5rem;
+         border: 0;
+         h2 {
+            margin-bottom: 0.5rem;
+         }
+      }
+      div:not(:first-child) {
+         padding: 0;
+         border: 0;
+      }
+   }
+}
+
+@media (width <= 575px) {
+   .ip-output {
+      @include flexbox(space-between, center, 0, 1rem);
+
+      > div {
+         width: calc(100%);
+         padding: 0;
+         border-left: 0;
+         text-align: center;
+      }
+   }
+}
